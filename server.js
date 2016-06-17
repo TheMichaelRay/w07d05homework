@@ -5,6 +5,11 @@ var
   bodyParser = require('body-parser'),
   PORT = 3000;
 
+app.use(bodyParser.json())
+
+app.get('/', function(req, res) {
+  res.json({message: 'Welcome to the site!'})
+})
 
 
 
