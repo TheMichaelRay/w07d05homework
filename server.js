@@ -3,7 +3,8 @@ var
   mongoose = require('mongoose'),
   app = express(),
   bodyParser = require('body-parser'),
-  PORT = 3000;
+  postRoutes = require('./routes/posts.js'),
+  PORT = 3000
 
 mongoose.connect('mongodb://localhost/scrumdb', function(err){
   if (err) throw err;
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/scrumdb', function(err){
 })
 
 app.use(bodyParser.json())
+app.use('/posts', postRoutes)
 
 app.get('/', function(req, res) {
   res.json({message: 'Welcome to the site!'})
