@@ -1,9 +1,8 @@
 var
   express = require('express'),
-  mongoose = require('mongoose'),
-  bodyParser = require('body-parser');
+  app = express(),
+  User = require('../models/User.js')
 
-  var app = express();
 
 app.get('/users', function(req, res){
   User.find({}, function(err, result){
@@ -33,17 +32,9 @@ app.delete('/users/:id', function(req, res){
   })
 })
 
-app.get('/createUser',function(req,res){
-  console.log(req.query);
-  var name="";
-  var age ="";
-  var email ="";
-  if(req.body.name){
-    name = req.body.name;
-  }
-  if(req.body.age){
-    age = req.body.age;
-  }
-  if(req.body.email){
-    email = req.body.email;
-  }
+app.post('/users',function(req,res){
+  User.create(req.body, function(err, user) {
+    if (err) throw err;
+    res.json(user)
+  })
+})

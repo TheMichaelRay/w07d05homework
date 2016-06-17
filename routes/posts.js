@@ -3,7 +3,6 @@ var
   app = express(),
   Post = require('../models/Post.js');
 
-
 app.get('/posts', function(req, res){
   Post.find({}, function(err, result){
     if(err) throw err;
@@ -32,13 +31,9 @@ app.delete('/posts/:id', function(req, res){
   })
 })
 
-app.get('/createPost',function(req,res){
-  console.log(req.query);
-  var title="";
-  var content ="";
-  if(req.body.title){
-    title = req.body.title;
-  }
-  if(req.body.content){
-    content = req.body.content;
-  }
+app.post('/posts',function(req,res){
+  Post.create(req.body, function(err, post) {
+    if (err) throw err;
+    res.json(post)
+  })
+})
