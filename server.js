@@ -5,6 +5,11 @@ var
   bodyParser = require('body-parser'),
   PORT = 3000;
 
+mongoose.connect('mongodb://localhost/scrumdb', function(err){
+  if (err) throw err;
+  console.log('connected to database!');
+})
+
 app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
