@@ -20,14 +20,14 @@ app.get('/users/:id', function(req, res){
 })
 
 app.patch('/users/:id', function(req, res){
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true} , function(err, question) {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true} , function(err, user) {
     if (err) console.log(err)
     res.json({message: "User updated!", success: true, user: user})
   })
 })
 
 app.delete('/users/:id', function(req, res){
-  User.findByIdAndRemove(req.params.id, function(err, question) {
+  User.findByIdAndRemove(req.params.id, function(err, user) {
     if (err) console.log(err)
     res.json({message: "User removed!", success: true, user: user})
   })
@@ -38,12 +38,12 @@ app.get('/createUser',function(req,res){
   var name="";
   var age ="";
   var email ="";
-  if(req.query.name){
+  if(req.body.name){
     name = req.body.name;
   }
-  if(req.query.age){
+  if(req.body.age){
     age = req.body.age;
   }
-  if(req.query.email){
+  if(req.body.email){
     email = req.body.email;
   }
