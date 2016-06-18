@@ -9,6 +9,7 @@ var
     updated_at: Date
   })
 
+// so far, this does not update the time when user updates information for some reason
 userSchema.pre('save', function(next){
   var current_date = new Date
   this.updated_at = current_date
