@@ -1,7 +1,6 @@
 var
   User = require('../models/User.js')
 
-
   module.exports = {
       index: index,
       create: create,
@@ -46,5 +45,3 @@ var
         res.json({message: "User removed!", success: true, user: user})
       })
     }
-
-    module.exports = userRouter
