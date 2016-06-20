@@ -1,10 +1,8 @@
 var
   express = require('express'),
-  app = express(),
   Post = require('../models/Post.js'),
   postRouter = express.Router();
   postCtrl = require('../controllers/posts.js')
-
 
 postRouter.route('/')
   .get(postCtrl.index)
