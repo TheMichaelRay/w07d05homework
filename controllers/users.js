@@ -2,49 +2,47 @@ var
   User = require('../models/User.js')
 
 
-  module.exports = {
-      index: index,
-      create: create,
-      patch: patch,
-      destroy: destroy,
-      show: show
-    }
+module.exports = {
+    index: index,
+    create: create,
+    update: update,
+    destroy: destroy,
+    show: show
+  }
 
-    function index (req, res){
-      User.find({}, function(err, result){
-        if(err) throw err;
-        res.json(result);
-      })
-    }
+function index (req, res){
+  User.find({}, function(err, result){
+    if(err) throw err;
+    res.json(result);
+  })
+}
 
-    function create (req,res){
-      User.create(req.body, function(err, user) {
-        if (err) throw err;
-        res.json(user)
-      })
-    }
+function create (req,res){
+  User.create(req.body, function(err, user) {
+    if (err) throw err;
+    res.json(user)
+  })
+}
 
-    function show (req, res){
-      User.findById(req.params.id, function(err, user){
-        if(err) return console.log(err)
-        res.json(user)
-      })
-    }
-
-
-    function update (req, res){
-      User.findByIdAndUpdate(req.params.id, req.body, { new: true} , function(err, user) {
-        if (err) console.log(err)
-        res.json({message: "User updated!", success: true, user: user})
-      })
-    }
+function show (req, res){
+  User.findById(req.params.id, function(err, user){
+    if(err) return console.log(err)
+    res.json(user)
+  })
+}
 
 
-    function destroy (req, res){
-      User.findByIdAndRemove(req.params.id, function(err, user) {
-        if (err) console.log(err)
-        res.json({message: "User removed!", success: true, user: user})
-      })
-    }
+function update (req, res){
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true} , function(err, user) {
+    if (err) console.log(err)
+    res.json({message: "User updated!", success: true, user: user})
+  })
+}
 
-    module.exports = userRouter
+
+function destroy (req, res){
+  User.findByIdAndRemove(req.params.id, function(err, user) {
+    if (err) console.log(err)
+    res.json({message: "User removed!", success: true, user: user})
+  })
+}

@@ -1,5 +1,5 @@
 var
-  User = require('../models/User.js')
+  Post = require('../models/Post.js')
 
 
 module.exports = {
