@@ -4,7 +4,8 @@ var
   app = express(),
   bodyParser = require('body-parser'),
   postRoutes = require('./routes/posts.js'),
-  userRoutes = require('./routes/users.js')
+  userRoutes = require('./routes/users.js'),
+  ejsLayouts = require('express-ejs-layouts'),
   PORT = 3000
 
 mongoose.connect('mongodb://localhost/scrumdb', function(err){
@@ -12,7 +13,11 @@ mongoose.connect('mongodb://localhost/scrumdb', function(err){
   console.log('connected to database!');
 })
 
+app.set('view engine', 'ejs')
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(ejsLayouts)
+app.use(express.static('./public'))
 app.use('/posts', postRoutes)
 app.use('/users', userRoutes)
 
