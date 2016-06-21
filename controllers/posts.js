@@ -14,7 +14,7 @@ module.exports = {
 function index (req, res){
   Post.find({}, function(err, result){
     if(err) throw err;
-    res.json(result);
+    res.render('posts/index');
   })
 }
 
