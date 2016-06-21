@@ -7,6 +7,8 @@ var
 postRouter.route('/')
   .get(postCtrl.index)
   .post(postCtrl.create)
+postRouter.route('/new')
+  .get(postCtrl.new)
 postRouter.route('/:id')
   .get(postCtrl.show)
   .patch(postCtrl.update)

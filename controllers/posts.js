@@ -4,6 +4,7 @@ var
 
 module.exports = {
   index: index,
+  new: knew,
   create: create,
   show: show,
   update: update,
@@ -12,10 +13,14 @@ module.exports = {
 
 
 function index (req, res){
-  Post.find({}, function(err, result){
+  Post.find({}, function(err, posts){
     if(err) throw err;
-    res.render('posts/index');
+    res.render('posts/index', {posts: posts});
   })
+}
+
+function knew (req, res){
+  res.render('posts/new')
 }
 
 
@@ -46,6 +51,6 @@ function destroy (req, res){
 function create (req,res){
   Post.create(req.body, function(err, post) {
     if (err) throw err;
-    res.json(post)
+    res.redirect('/posts')
   })
 }
