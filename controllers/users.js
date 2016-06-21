@@ -3,6 +3,7 @@ var
 
 module.exports = {
     index: index,
+    new: knew,
     create: create,
     update: update,
     destroy: destroy,
@@ -10,16 +11,20 @@ module.exports = {
   }
 
 function index (req, res){
-  User.find({}, function(err, result){
+  User.find({}, function(err, user){
     if(err) throw err;
-    res.render('users/index');
+    res.render('users/index', {user: user });
   })
 }
+
+function knew (req, res){
+    res.render('users/new');
+  }
 
 function create (req,res){
   User.create(req.body, function(err, user) {
     if (err) throw err;
-    res.json(user)
+    res.redirect('/users')
   })
 }
 

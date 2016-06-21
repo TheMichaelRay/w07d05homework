@@ -1,1 +1,5 @@
-users index
+<% user.forEach(function(u){ %>
+  <h3><%= u.name %></h3>
+  <li><%= u.age %></li>
+  <li><%= u.email %></li>
+  <% }) %>

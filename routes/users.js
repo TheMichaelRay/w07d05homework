@@ -9,6 +9,8 @@ var
 userRouter.route('/')
   .get(userCtrl.index)
   .post(userCtrl.create)
+userRouter.route('/new')
+  .get(userCtrl.new)
 userRouter.route('/:id')
   .get(userCtrl.show)
   .patch(userCtrl.update)
